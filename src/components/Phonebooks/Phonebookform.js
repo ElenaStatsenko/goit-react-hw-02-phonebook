@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+
 import * as Yup from 'yup';
 
 // паттерн для проверки номера
@@ -9,18 +10,17 @@ const phoneRegExp =
 const nameRegExp =
   "^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 
-const schema = Yup.object().shape({
+// валидация формы через библиотеку Yup
+const SignupSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Shouls be more 3')
-    .matches(
-      nameRegExp,
-      'Name may only contain letters, apostrophe, dash, and spaces'
-    )
-    .required('Required'),
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .matches(nameRegExp, 'Неверный ввод')
+    .required('Заполните поле'),
   number: Yup.string()
-    .min(3, 'Shouls be more 3')
-    .matches(phoneRegExp, 'Invalid phone number format')
-    .required('Required'),
+    .min(7, 'Too Short!')
+    .matches(phoneRegExp, 'Неверный ввод')
+    .required('Заполните поле'),
 });
 
 export const Phonebookform = ({ addContacts }) => {
@@ -30,7 +30,7 @@ export const Phonebookform = ({ addContacts }) => {
         name: '',
         number: '',
       }}
-      validationSchema={schema}
+      validationSchema={SignupSchema}
       onSubmit={values => {
         addContacts(values);
       }}
@@ -44,7 +44,7 @@ export const Phonebookform = ({ addContacts }) => {
 
         <label>
           Number
-          <Field name="Number" placeholder="380671633600" />
+          <Field type="tel" name="number" placeholder="111-11-11" required />
           <ErrorMessage name="Number" component="div" />
         </label>
 
