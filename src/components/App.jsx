@@ -14,12 +14,11 @@ export class App extends Component {
   state = {
     contacts: defaultState,
   };
+
   addContacts = value => {
-    this.setState(prevState => {
-      console.log(prevState);
-      console.log(value);
-    });
+    console.log(value);
   };
+  
   render() {
     return (
       <div>

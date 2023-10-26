@@ -11,14 +11,14 @@ const nameRegExp =
 
 const schema = Yup.object().shape({
   name: Yup.string()
-    // .min(3, 'Shouls be more 3')
+    .min(3, 'Shouls be more 3')
     .matches(
       nameRegExp,
       'Name may only contain letters, apostrophe, dash, and spaces'
     )
     .required('Required'),
   number: Yup.string()
-    // .min(3, 'Shouls be more 3')
+    .min(3, 'Shouls be more 3')
     .matches(phoneRegExp, 'Invalid phone number format')
     .required('Required'),
 });
