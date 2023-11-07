@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 export const Contacts = ({ dataValue: { contacts } }) => {
-  
+  console.log(contacts);
   return (
     <div>
       <ul>{contacts.map(contact =>

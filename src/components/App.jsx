@@ -16,10 +16,16 @@ export class App extends Component {
   };
 
   addContacts = value => {
-    console.log(value);
+    this.setState(prevState => {
+     
+
+      return {contacts: [...prevState.contacts, value] };
+    });
+  
   };
   
   render() {
+    console.log(this.state);
     return (
       <div>
         <Phonebookform value={this.state} addContacts={this.addContacts} />
