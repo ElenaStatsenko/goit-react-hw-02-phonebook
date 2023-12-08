@@ -44,7 +44,7 @@ export const Phonebookform = ({ addContacts }) => {
       <Form>
         <label>
           Name
-          <Field name="Name" placeholder="Olena" />
+          <Field name="name" placeholder="Olena" />
           {/* <ErrorMessage name="Name" component="div" /> */}
         </label>
 
