@@ -17,12 +17,10 @@ export class App extends Component {
 
   addContacts = value => {
     this.setState(prevState => {
-
-      return {contacts: [...prevState.contacts, value] };
+      return { contacts: [...prevState.contacts, value] };
     });
-  
   };
-  
+
   render() {
     console.log(this.state);
     return (
