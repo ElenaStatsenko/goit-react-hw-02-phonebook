@@ -7,27 +7,33 @@ export class App extends Component {
     contacts: [],
     filter: '',
     name: '',
-    number: ''
-  }
+    number: '',
+  };
 
   addContacts = value => {
     this.setState(prevState => {
       return { contacts: [...prevState.contacts, value] };
     });
   };
-changeTopicFilter=(newTopic)=>{
-  this.setState({
-    filter: newTopic
-  })
-}
+  changeTopicFilter = newTopic => {
+    this.setState({
+      filter: newTopic,
+    });
+  };
   render() {
-   const{contacts, filter, name, number} = this.state
-    const filterContacts=contacts.filter(contact=> contact.name.toLowerCase().includes(filter.toLowerCase))
+    const { contacts, filter, name, number } = this.state;
+    const filterContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase)
+    );
+    console.log(filterContacts);
     return (
       <div>
         <Phonebookform value={this.state} addContacts={this.addContacts} />
         <Contacts dataValue={this.state} />
-        <SearchFilter topicFilter={this.state.filter} onChangeTopic={this.changeTopicFilter}/>
+        <SearchFilter
+          topicFilter={this.state.filter}
+          onChangeTopic={this.changeTopicFilter}
+        />
       </div>
     );
   }
