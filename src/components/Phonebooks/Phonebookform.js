@@ -31,7 +31,7 @@ export const Phonebookform = ({ addContacts }) => {
         number: '',
       }}
       // validationSchema={SignupSchema}
-      onSubmit={values => {
+      onSubmit={(values, actions) => {
       
         const keyId = nanoid();
         const keyId1 = { key: keyId };
@@ -39,6 +39,7 @@ export const Phonebookform = ({ addContacts }) => {
         const object = { ...values, ...keyId1 };
 
         addContacts(object);
+        actions.resetForm(object);
       }}
     >
       <Form>
@@ -55,6 +56,7 @@ export const Phonebookform = ({ addContacts }) => {
         </label>
 
         <button type="submit">Добавить контакт</button>
+       
       </Form>
     </Formik>
   );
