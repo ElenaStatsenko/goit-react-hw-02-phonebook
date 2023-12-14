@@ -34,11 +34,12 @@ export const Phonebookform = ({ addContacts }) => {
       onSubmit={(values, actions) => {
       
         const keyId = nanoid();
-        const keyId1 = { key: keyId };
+        const keyId1 = { id: keyId };
 
-        const object = { ...values, ...keyId1 };
-
+        const object = { ...keyId1, ...values };
+// console.log(object)
         addContacts(object);
+       
         actions.resetForm(object);
       }}
     >
