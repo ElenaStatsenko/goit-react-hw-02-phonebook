@@ -12,7 +12,6 @@ const defaultState = [
   { id: 'id-6', name: 'Clement Young', number: '344-01-46' },
 ];
 
-
 export class App extends Component {
   state = {
     contacts: defaultState,
@@ -22,7 +21,8 @@ export class App extends Component {
   };
 
   addContacts = object => {
-    this.setState((prevState) => {
+    this.setState(prevState => {
+      console.log(prevState);
       return { contacts: [...prevState.contacts, object] };
     });
   };
@@ -30,15 +30,14 @@ export class App extends Component {
     this.setState({
       filter: newTopic,
     });
-    
   };
   render() {
     const { contacts, filter, name, number } = this.state;
-    
-    const filterContacts = contacts.filter(contact => 
+    console.log(this.state);
+    const filterContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
-    console.log(filterContacts);
+
     return (
       <div>
         <Phonebookform value={this.state} addContacts={this.addContacts} />
