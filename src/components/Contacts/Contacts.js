@@ -1,14 +1,10 @@
-
-export const Contacts = ({ dataValue: { contacts } }) => {
-  console.log(contacts);
+export const Contacts = ({ dataValue }) => {
+ 
   return (
     <div>
-      <ul>{contacts.map(contact =>
-       
+      <ul>{dataValue.map(contact =>
       <li key={contact.id}> {contact.name}: {contact.number}
-
       </li>
-      
       )}</ul>
     </div>
   );
